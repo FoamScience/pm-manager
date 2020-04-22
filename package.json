@@ -20,7 +20,7 @@
     "@keystonejs/app-static": "^5.1.2",
     "@keystonejs/fields": "^9.0.0",
     "@keystonejs/keystone": "^8.0.0",
-    "@keystonejs/authpassword": "^8.0.0",
+    "@keystonejs/auth-password": "^5.1.6",
     "cross-env": "^7.0.0",
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.0",
