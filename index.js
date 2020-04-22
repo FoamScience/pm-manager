@@ -12,11 +12,7 @@ const { PasswordAuthStrategy } = require('@keystonejs/auth-password');
 
 const keystone = new Keystone({
   name: 'Phone Book Manager',
-  adapter: new KnexAdaptera(
-	  {
-		  connection:'postgres://krfnloxdczscau:25f41dcb459a83b915d9cb3ee24b2591063e0aae7053ed24b3121d577430d631@ec2-34-193-232-231.compute-1.amazonaws.com:5432/algeria-pm-manager'
-	  }
-  ),
+  adapter: new KnexAdaptera(),
   appVersion: {
     version: '0.0.1',
     addVersionToHttpHeaders: true,
