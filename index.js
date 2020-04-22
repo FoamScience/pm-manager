@@ -1,5 +1,5 @@
 const { Keystone } = require('@keystonejs/keystone');
-const { MongooseAdapter } = require('@keystonejs/adapter-mongoose');
+const { KnexAdapter } = require('@keystonejs/adapter-knex');
 const { Text, Password } = require('@keystonejs/fields');
 const { GraphQLApp } = require('@keystonejs/app-graphql');
 const { AdminUIApp } = require('@keystonejs/app-admin-ui');
@@ -12,7 +12,7 @@ const { PasswordAuthStrategy } = require('@keystonejs/auth-password');
 
 const keystone = new Keystone({
   name: 'Phone Book Manager',
-  adapter: new MongooseAdapter(),
+  adapter: new KnexAdapter(),
   appVersion: {
     version: '0.0.1',
     addVersionToHttpHeaders: true,
