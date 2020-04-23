@@ -18,7 +18,7 @@ const keystone = new Keystone({
 	  dropDatabase: true,
 	  knexOptions: {
 		  client: 'mysql',
-		  connection: 'mysql://dqrgyu3dwdv81nbr:wzqt6l970r1lbvvp@qbhol6k6vexd5qjs.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/c3m8bs171og2ygee'
+		  connection: 'mysql://e8uxxfuzux33hxb9:jnp2g3c2jqmmto46@un0jueuv2mam78uv.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/kzey1es9tox4wwyp'
 		  /*pool: {
 			min: 5,
 			max: 20,
