@@ -15,7 +15,13 @@ const { PasswordAuthStrategy } = require('@keystonejs/auth-password');
 const keystone = new Keystone({
   name: 'Phone Book Manager',
   adapter: new KnexAdapter({
-	  dropDatabase: true
+	  dropDatabase: true,
+	  knexOptions: {
+		  pool: {
+			min: 1,
+			max: 1,
+		  },
+	  }
   }),
   appVersion: {
     version: '0.0.1',
