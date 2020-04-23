@@ -18,7 +18,7 @@ const keystone = new Keystone({
 	  dropDatabase: true,
 	  knexOptions: {
 		  pool: {
-			min: 1,
+			min: 5,
 			max: 20,
 		  },
 	  }
