@@ -6,6 +6,7 @@ const { GraphQLApp } = require('@keystonejs/app-graphql');
 const { AdminUIApp } = require('@keystonejs/app-admin-ui');
 const { StaticApp } = require('@keystonejs/app-static');
 const { PasswordAuthStrategy } = require('@keystonejs/auth-password');
+const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 
 const UserSchema = require('./lists/User.js');
