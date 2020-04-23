@@ -17,11 +17,11 @@ const keystone = new Keystone({
   adapter: new KnexAdapter({
 	  /*dropDatabase: true,*/
 	  knexOptions: {
-		  client: 'postgres',
-		  pool: {
+		  client: 'mysql',
+		  /*pool: {
 			min: 5,
 			max: 20,
-		  },
+		  },*/
 	  }
   }),
   appVersion: {
