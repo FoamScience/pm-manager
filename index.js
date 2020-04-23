@@ -1,5 +1,5 @@
 const { Keystone } = require('@keystonejs/keystone');
-const { MongooseAdapter } = require('@keystonejs/adapter-mongoose');
+const { MongoAdapter } = require('@keystonejs/adapter-mongoose');
 //const { KnexAdapter } = require('@keystonejs/adapter-knex');
 const { Text, Password } = require('@keystonejs/fields');
 const { GraphQLApp } = require('@keystonejs/app-graphql');
