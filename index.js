@@ -14,17 +14,8 @@ const { PasswordAuthStrategy } = require('@keystonejs/auth-password');
 
 const keystone = new Keystone({
   name: 'Phone Book Manager',
-  adapter: new MongooseAdapter(),/*{
-	  dropDatabase: true,
-	  /*knexOptions: {
-		  client: 'postgres',
-		  connection: 'mysql://e8uxxfuzux33hxb9:jnp2g3c2jqmmto46@un0jueuv2mam78uv.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/kzey1es9tox4wwyp'
-		  pool: {
-			min: 5,
-			max: 20,
-		  },
-	  }
-  }),*/
+  adapter: new MongooseAdapter(),
+  // MONGO_URI = "mongodb+srv://taher-nacer:f4ssJxmyr6JPVG4T@pm-manager-lsi8u.gcp.mongodb.net/test?retryWrites=true&w=majority"
   appVersion: {
     version: '0.0.1',
     addVersionToHttpHeaders: true,
