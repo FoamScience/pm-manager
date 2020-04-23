@@ -19,7 +19,7 @@ const keystone = new Keystone({
 	  knexOptions: {
 		  pool: {
 			min: 1,
-			max: 1,
+			max: 20,
 		  },
 	  }
   }),
