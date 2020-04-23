@@ -17,15 +17,15 @@ const NumberSchema = require('./lists/Number.js');
 const keystone = new Keystone({
   name: 'Phone Book Manager',
   adapter: new MongooseAdapter(),
+  sessionStore: new MongoStore({
+    url: process.env.MONGO_URI
+  })
   // MONGO_URI = "mongodb+srv://taher-nacer:f4ssJxmyr6JPVG4T@pm-manager-lsi8u.gcp.mongodb.net/test?retryWrites=true&w=majority"
   appVersion: {
     version: '0.0.1',
     addVersionToHttpHeaders: true,
     access: true,
   },
-  sessionStore: new MongoStore({
-    url: process.env.MONGO_URL
-  })
 });
 
 //keystone.createList('Todo', TodoSchema);
