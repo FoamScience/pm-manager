@@ -1,5 +1,5 @@
 const { Keystone } = require('@keystonejs/keystone');
-const { MongoAdapter } = require('@keystonejs/adapter-mongoose');
+const { MongooseAdapter } = require('@keystonejs/adapter-mongoose');
 //const { KnexAdapter } = require('@keystonejs/adapter-knex');
 const { Text, Password } = require('@keystonejs/fields');
 const { GraphQLApp } = require('@keystonejs/app-graphql');
@@ -14,7 +14,7 @@ const { PasswordAuthStrategy } = require('@keystonejs/auth-password');
 
 const keystone = new Keystone({
   name: 'Phone Book Manager',
-  adapter: new MongoAdapter({
+  adapter: new MongooseAdapter(),/*{
 	  dropDatabase: true,
 	  /*knexOptions: {
 		  client: 'postgres',
@@ -23,8 +23,8 @@ const keystone = new Keystone({
 			min: 5,
 			max: 20,
 		  },
-	  }*/
-  }),
+	  }
+  }),*/
   appVersion: {
     version: '0.0.1',
     addVersionToHttpHeaders: true,
