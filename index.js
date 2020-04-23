@@ -15,7 +15,7 @@ const { PasswordAuthStrategy } = require('@keystonejs/auth-password');
 const keystone = new Keystone({
   name: 'Phone Book Manager',
   adapter: new KnexAdapter({
-	  /*dropDatabase: true,*/
+	  dropDatabase: true,
 	  knexOptions: {
 		  client: 'mysql',
 		  connection: 'mysql://kwxt4yty4nq99opc:hmknfkqxymkow80g@qbct6vwi8q648mrn.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/pheaj0w559hd45qv'
