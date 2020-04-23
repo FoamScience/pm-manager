@@ -42,8 +42,8 @@ module.exports = {
   keystone,
   apps: [
     new GraphQLApp(),
-    //new StaticApp({ path: '/', src: 'public' , authStrategy}),
+    //new StaticApp({ path: '/', src: 'public' }),
     // Setup the optional Admin UI
-    new AdminUIApp({ /*authStrategy,*/ enableDefaultRoute: true }),
+    new AdminUIApp({ authStrategy, enableDefaultRoute: true }),
   ]
 };
