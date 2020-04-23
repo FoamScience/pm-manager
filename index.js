@@ -72,6 +72,6 @@ module.exports = {
     new GraphQLApp(),
     //new StaticApp({ path: '/', src: 'public' }),
     // Setup the optional Admin UI
-    new AdminUIApp({ authStrategy: authPassStrategy, enableDefaultRoute: true, adminPath: '/' }),
+    new AdminUIApp({ authStrategy: authPassStrategy, enableDefaultRoute: true, adminPath: '/admin' }),
   ]
 };
