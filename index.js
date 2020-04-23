@@ -29,14 +29,14 @@ Users = keystone.createList('User', UserSchema);
 Numbers = keystone.createList ( 'Number', NumberSchema);
 
 
-const authStrategy = keystone.createAuthStrategy({
-  type: PasswordAuthStrategy,
-  list: 'User',
-  config: {
-    identityField: 'username', // default: 'email'
-    secretField: 'password', // default: 'password'
-  },
-});
+//const authStrategy = keystone.createAuthStrategy({
+//  type: PasswordAuthStrategy,
+//  list: 'User',
+//  config: {
+//    identityField: 'username', // default: 'email'
+//    secretField: 'password', // default: 'password'
+//  },
+//});
 
 const googleStrategy = keystone.createAuthStrategy({
   type: GoogleAuthStrategy,
