@@ -6,6 +6,7 @@ const { GraphQLApp } = require('@keystonejs/app-graphql');
 const { AdminUIApp } = require('@keystonejs/app-admin-ui');
 const { StaticApp } = require('@keystonejs/app-static');
 const { PasswordAuthStrategy } = require('@keystonejs/auth-password');
+const MongoStore = require("connect-mongo")(session);
 
 const UserSchema = require('./lists/User.js');
 const CustomerSchema = require('./lists/Customer.js');
@@ -21,6 +22,9 @@ const keystone = new Keystone({
     addVersionToHttpHeaders: true,
     access: true,
   },
+  sessionStore: new MongoStore({
+    url: process.env.MONGO_URL
+  })
 });
 
 //keystone.createList('Todo', TodoSchema);
