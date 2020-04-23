@@ -9,7 +9,37 @@ const { StaticApp } = require('@keystonejs/app-static');
 const UserSchema = require('./lists/User.js');
 const CustomerSchema = require('./lists/Customer.js');
 const NumberSchema = require('./lists/Number.js');
-const { PasswordAuthStrategy } = require('@keystonejs/auth-password');
+const { GoogleAuthStrategy } = require('@keystonejs/auth-passport');
+
+const googleStrategy = keystone.createAuthStrategy({
+  type: GoogleAuthStrategy,
+  list: 'User',
+  config: {
+    idField: 'googleId',
+    appId: '1082645233483-psj9ngou2chbp4mu8376v53j5ltagbcc.apps',
+    appSecret: 'bzycTVdGBL-hqQGJC2AtSPD6',
+    loginPath: '/auth/google',
+    callbackPath: '/auth/google/callback',
+
+    // Once a user is found/created and successfully matched to the
+    // googleId, they are authenticated, and the token is returned here.
+    // NOTE: By default Keystone sets a `keystone.sid` which authenticates the
+    // user for the API domain. If you want to authenticate via another domain,
+    // you must pass the `token` as a Bearer Token to GraphQL requests.
+    onAuthenticated: ({ token, item, isNewItem }, req, res) => {
+      console.log(token);
+      res.redirect('/');
+    },
+
+    // If there was an error during any of the authentication flow, this
+    // callback is executed
+    onError: (error, req, res) => {
+      console.error(error);
+      res.redirect('/?error=Uh-oh');
+    },
+  },
+});
+<Paste>
 
 
 const keystone = new Keystone({
