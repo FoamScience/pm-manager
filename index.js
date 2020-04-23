@@ -34,7 +34,7 @@ Users = keystone.createList('User', UserSchema);
 Numbers = keystone.createList ( 'Number', NumberSchema);
 
 
-const authPassStrategy = keystone.createAuthStrategy({
+const authStrategy = keystone.createAuthStrategy({
   type: PasswordAuthStrategy,
   list: 'User',
   config: {
@@ -77,6 +77,6 @@ module.exports = {
     new GraphQLApp(),
     //new StaticApp({ path: '/', src: 'public' }),
     // Setup the optional Admin UI
-    new AdminUIApp({ authStrategy: authPassStrategy, enableDefaultRoute: true, adminPath: '/admin' }),
+    new AdminUIApp({ authStrategy }),
   ]
 };
