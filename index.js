@@ -43,8 +43,8 @@ const googleStrategy = keystone.createAuthStrategy({
   list: 'User',
   config: {
     idField: 'googleId',
-    appId: '1082645233483-psj9ngou2chbp4mu8376v53j5ltagbcc.apps',
-    appSecret: 'bzycTVdGBL-hqQGJC2AtSPD6',
+    appId: '1082645233483-lvrl0ihtob9ov5lhbnnq1p3dhbtt2vb7.apps.googleusercontent.com',
+    appSecret: 'tWz146cXoZzKCJBMfC3iaADt',
     loginPath: '/auth/google',
     callbackPath: '/auth/google/callback',
     // Once a user is found/created and successfully matched to the
@@ -54,7 +54,7 @@ const googleStrategy = keystone.createAuthStrategy({
     // you must pass the `token` as a Bearer Token to GraphQL requests.
     onAuthenticated: ({ token, item, isNewItem }, req, res) => {
       console.log(token);
-      res.redirect('/admin');
+      res.redirect('/');
     },
     // If there was an error during any of the authentication flow, this
     // callback is executed
