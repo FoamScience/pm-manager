@@ -20,11 +20,11 @@ module.exports = {
 	isAdmin: { type: Checkbox, defaultValue: false },
 	email: {
       type: Text,
-      // 2. Only authenticated users can read/update their own email, not any other user's.
-      // Admins can read/update anyone's email.
-      access: ({ existingItem, authentication: { item } }) => {
-        return item.isAdmin || existingItem.id === item.id;
-      },
+    //  // 2. Only authenticated users can read/update their own email, not any other user's.
+    //  // Admins can read/update anyone's email.
+    //  access: ({ existingItem, authentication: { item } }) => {
+    //    return item.isAdmin || existingItem.id === item.id;
+    //  },
     },
   },
   labelField: 'username',
