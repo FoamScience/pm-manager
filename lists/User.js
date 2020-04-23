@@ -8,7 +8,6 @@ module.exports = {
     maximumPageSize: 100,
   },
   fields: {
-	googleId: { type: Text },
     username: {
       type: Text,
       isRequired: true,
