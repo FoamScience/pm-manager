@@ -54,7 +54,7 @@ const googleStrategy = keystone.createAuthStrategy({
     // you must pass the `token` as a Bearer Token to GraphQL requests.
     onAuthenticated: ({ token, item, isNewItem }, req, res) => {
       console.log(token);
-      res.redirect('/');
+      res.redirect('/admin');
     },
     // If there was an error during any of the authentication flow, this
     // callback is executed
