@@ -6,27 +6,13 @@ const { GraphQLApp } = require('@keystonejs/app-graphql');
 const { AdminUIApp } = require('@keystonejs/app-admin-ui');
 const { StaticApp } = require('@keystonejs/app-static');
 const { PasswordAuthStrategy } = require('@keystonejs/auth-password');
-const session = require("express-session");
-const MongoStore = require("connect-mongo")(session);
+const { Session } = require("express-session");
+const { MongoStore } = require("connect-mongo")(Session);
 
 const UserSchema = require('./lists/User.js');
 const CustomerSchema = require('./lists/Customer.js');
 const NumberSchema = require('./lists/Number.js');
 
-
-const keystone = new Keystone({
-  name: 'Phone Book Manager',
-  adapter: new MongooseAdapter(),
-  sessionStore: new MongoStore({
-    url: process.env.MONGO_URI
-  }),
-  // MONGO_URI = "mongodb+srv://taher-nacer:f4ssJxmyr6JPVG4T@pm-manager-lsi8u.gcp.mongodb.net/test?retryWrites=true&w=majority"
-  appVersion: {
-    version: '0.0.1',
-    addVersionToHttpHeaders: true,
-    access: true,
-  },
-});
 
 //keystone.createList('Todo', TodoSchema);
 Customers = keystone.createList('Customer', CustomerSchema);
@@ -71,12 +57,26 @@ const authStrategy = keystone.createAuthStrategy({
 //  },
 //});
 
+const keystone = new Keystone({
+  name: 'Phone Book Manager',
+  adapter: new MongooseAdapter(),
+  sessionStore: new MongoStore({
+    url: process.env.MONGO_URI
+  }),
+  // MONGO_URI = "mongodb+srv://taher-nacer:f4ssJxmyr6JPVG4T@pm-manager-lsi8u.gcp.mongodb.net/test?retryWrites=true&w=majority"
+  appVersion: {
+    version: '0.0.1',
+    addVersionToHttpHeaders: true,
+    access: true,
+  },
+});
+
 module.exports = {
   keystone,
   apps: [
     new GraphQLApp(),
     //new StaticApp({ path: '/', src: 'public' }),
     // Setup the optional Admin UI
-    new AdminUIApp({ authStrategy }),
+    new AdminUIApp({ authStrategy, enableDefaultRoute: true }),
   ]
 };
