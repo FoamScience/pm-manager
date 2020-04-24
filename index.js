@@ -21,7 +21,7 @@ const keystone = new Keystone({
   "session store": new MongoStore({
     url: process.env.MONGO_URI
   }),
-  // MONGO_URI = "mongodb+srv://taher-nacer:f4ssJxmyr6JPVG4T@pm-manager-lsi8u.gcp.mongodb.net/test?retryWrites=true&w=majority"
+  //// MONGO_URI = "mongodb+srv://taher-nacer:f4ssJxmyr6JPVG4T@pm-manager-lsi8u.gcp.mongodb.net/test?retryWrites=true&w=majority"
   appVersion: {
     version: '0.0.1',
     addVersionToHttpHeaders: true,
@@ -78,6 +78,9 @@ module.exports = {
     new GraphQLApp(),
     //new StaticApp({ path: '/', src: 'public' }),
     // Setup the optional Admin UI
-    new AdminUIApp({ authStrategy, enableDefaultRoute: true }),
+    new AdminUIApp({ 
+		authStrategy, enableDefaultRoute: true,
+		hooks: require.resolve('./admin-hooks')
+	}),
   ]
 };

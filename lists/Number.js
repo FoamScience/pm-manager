@@ -61,16 +61,16 @@ module.exports = {
   {
   	defaultColumns: 'phoneNumber,assignedTo,deadline,isComplete'
   },
-  //access: {
-  //  // 1. Only admins can read deactivated user accounts
-  //	read: ({ authentication: { item } }) => {
-  //	  if (item.isAdmin) {
-  //	    return {}; // Don't filter any items for admins
-  //	  }
-  //	  // Approximately; users.filter(user => user.state !== 'deactivated');
-  //	  return {
-  //	    state_not: 'deactivated',
-  //	  };
-  //	},
-  //},
+  access: {
+    // 1. Only admins can read deactivated user accounts
+  	read: ({ authentication: { item } }) => {
+  	  if (item.isAdmin) {
+  	    return {}; // Don't filter any items for admins
+  	  }
+  	  // Approximately; users.filter(user => user.state !== 'deactivated');
+  	  return {
+  	    state_not: 'deactivated',
+  	  };
+  	},
+  },
 };
