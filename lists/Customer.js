@@ -1,6 +1,7 @@
 const { Text, Integer, Checkbox } = require('@keystonejs/fields');
 
 module.exports = {
+  access: { auth: true },
   adminConfig: {
     defaultColumns: 'name,phoneNumber,email',
     defaultPageSize: 50,

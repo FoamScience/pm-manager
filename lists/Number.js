@@ -1,6 +1,23 @@
 const { Text, Integer, CalendarDay, Select, Checkbox, Relationship } = require('@keystonejs/fields');
 
 module.exports = {
+  access: {
+	auth: true,
+	read: ({ authentication: { item } }) => {
+      if (item.isAdmin) {
+        return {}; // Don't filter any items for admins
+      }
+      return {
+        assignedTo: item,
+      };
+    },
+	create: ({ authentication: { item } }) => {
+      if (item.isAdmin) {
+        return true; // Don't filter any items for admins
+      }
+      return false;
+    },
+  },
   adminConfig: {
     defaultColumns: 'productName,quantity,customer,isComplete,assignedTo,deadline,location',
     defaultPageSize: 50,
@@ -23,7 +40,8 @@ module.exports = {
     theCustomer: {
       type: Relationship,
       isRequired: true,
-	  ref: 'Customer'
+	  ref: 'Customer',
+	  index: true,
     },
     isComplete: {
       type: Checkbox,
@@ -52,25 +70,10 @@ module.exports = {
 	  options: "Algiers, Setif, Oran, Djelfa, Tizi Ouzou, Batna, Chlef, MSila, Bejaia, Tlemcen, Constantine, Skikda, Tiaret, Blida, Mila, Medea, Mascara, AinDefla, Biskra, Mostaganem, Relizane, Bouira, Tebessa, BordjBouArreridj, ElOued, Jijel, OumElBouaghi, Annaba, Boumerdes, Ouargla, SidiBelAbbes, Guelma, Tipaza, Khenchela, Laghouat, SoukAhras, ElTarf, Adrar, Ghardaia, AinTemouchent, Saida, ElBayadh, Tissemsilt, Bechar, Naama, Tamanrasset, Tindouf, Illizi",
 	},
     assignedTo: {
+	  access: true,
       type: Relationship,
-	  ref: 'User', many: true,
+	  ref: 'User',
       isRequired: true,
     },
-  },
-  adminConfig:
-  {
-  	defaultColumns: 'phoneNumber,assignedTo,deadline,isComplete'
-  },
-  access: {
-    // 1. Only admins can read deactivated user accounts
-  	read: ({ authentication: { item } }) => {
-  	  if (item.isAdmin) {
-  	    return {}; // Don't filter any items for admins
-  	  }
-  	  // Approximately; users.filter(user => user.state !== 'deactivated');
-  	  return {
-  	    state_not: 'deactivated',
-  	  };
-  	},
-  },
+  }
 };
