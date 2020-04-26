@@ -18,9 +18,9 @@ const keystone = new Keystone({
   adapter: new MongooseAdapter(),
   cookieSecret: process.env.SESSION_KEY,
   secureCookies:false,
-  //"session store": new MongoStore({
-  //  url: process.env.MONGO_URI
-  //}),
+  "session store": new MongoStore({
+    url: process.env.MONGO_URI
+  }),
   //// MONGO_URI = "mongodb+srv://taher-nacer:f4ssJxmyr6JPVG4T@pm-manager-lsi8u.gcp.mongodb.net/test?retryWrites=true&w=majority"
   appVersion: {
     version: '0.0.1',
