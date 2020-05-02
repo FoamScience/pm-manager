@@ -16,7 +16,7 @@ const NumberSchema = require('./lists/Number.js');
 const keystone = new Keystone({
   name: 'Phone Book Manager',
   adapter: new MongooseAdapter(),
-  cookieSecret: process.env.SESSION_KEY,
+  cookieSecret: process.env.SECURE_KEY,
   secureCookies:false,
   "session store": new MongoStore({
     url: process.env.MONGO_URI
