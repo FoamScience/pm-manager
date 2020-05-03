@@ -17,7 +17,10 @@ const keystone = new Keystone({
   name: 'Phone Book Manager',
   adapter: new MongooseAdapter(),
   cookieSecret: process.env.SECURE_KEY,
-  secureCookies:false,
+  cookie: {
+    secure: true,
+  },
+  //secureCookies:false,
   "session store": new MongoStore({
     url: process.env.MONGO_URI
   }),
@@ -82,5 +85,8 @@ module.exports = {
 		authStrategy, enableDefaultRoute: true,
 		hooks: require.resolve('./admin-hooks/')
 	}),
-  ]
+  ],
+  configureExpress: app => {
+    app.set('trust proxy', 1);
+  }
 };
