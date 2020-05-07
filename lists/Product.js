@@ -3,6 +3,12 @@ const { Text, Select, Integer, Checkbox } = require('@keystonejs/fields');
 module.exports = {
   access: { 
 	auth: true ,
+    create: ({ existingItem, authentication: { item } }) => {
+      return item.isAdmin; 
+    },
+    update: ({ existingItem, authentication: { item } }) => {
+      return item.isAdmin; 
+    },
   },
   adminConfig: {
     defaultColumns: 'productName',
