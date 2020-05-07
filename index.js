@@ -11,6 +11,7 @@ const MongoStore = require("connect-mongo")(ExpressSession);
 
 const UserSchema = require('./lists/User.js');
 const CustomerSchema = require('./lists/Customer.js');
+const ProductSchema = require('./lists/Product.js');
 const NumberSchema = require('./lists/Number.js');
 
 const keystone = new Keystone({
@@ -35,6 +36,7 @@ const keystone = new Keystone({
 //keystone.createList('Todo', TodoSchema);
 Customers = keystone.createList('Customer', CustomerSchema);
 Users = keystone.createList('User', UserSchema);
+Products = keystone.createList ( 'Product', ProductSchema);
 Numbers = keystone.createList ( 'Number', NumberSchema);
 
 

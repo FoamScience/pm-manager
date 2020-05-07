@@ -14,8 +14,11 @@ export default {
       ],
     },
     {
-      label: 'People',
-      children: ['User'],
+      label: 'People & Products',
+      children: [
+		  {label: 'Users', listKey: 'User' }, 
+		  {label: 'Products', listKey: 'Product' }, 
+	  ],
     },
   ],
 };

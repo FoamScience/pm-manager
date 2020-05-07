@@ -28,9 +28,11 @@ module.exports = {
   fields: 
   {
     productName: {
-      type: Select,
-	  options: 'prod-1,prod-2',
-	  dataType: 'string',
+      //type: Select,
+	  //options: 'prod-1,prod-2',
+	  //dataType: 'string',
+      type: Relationship,
+	  ref: 'Product',
 	  isRequired: true,
     },
     quantity: {
