@@ -4,15 +4,16 @@ module.exports = {
   access: {
 	auth: true,
 	read: ({ authentication: { item } }) => {
-      if (item.isAdmin) {
+      if (item.isAdmin || item.isLauncher) {
         return {}; // Don't filter any items for admins
       }
       return {
-        assignedTo: item,
+        //assignedTo: item,
+		location: item.location,
       };
     },
 	create: ({ authentication: { item } }) => {
-      if (item.isAdmin) {
+      if (item.isAdmin || item.isLauncher) {
         return true; // Don't filter any items for admins
       }
       return false;
@@ -44,10 +45,19 @@ module.exports = {
       isRequired: true,
 	  ref: 'Customer',
 	  index: true,
+	  access: {
+        update: ({ existingItem, authentication: { item } }) => {
+          return item.isAdmin;
+        },
+	  }
     },
-    isComplete: {
-      type: Checkbox,
-      defaultValue: false,
+    status: {
+      //type: Checkbox,
+      //defaultValue: false,
+	  type: Select,
+	  dataType: 'string',
+	  isRequired: true,
+	  options: "done,waiting,problems",
     },
     // added fields
     startDate: {

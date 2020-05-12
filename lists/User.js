@@ -1,4 +1,4 @@
-const { Text, Password, Checkbox } = require('@keystonejs/fields');
+const { Text, Password, Checkbox, Select } = require('@keystonejs/fields');
 
 module.exports = {
   access: { 
@@ -28,7 +28,43 @@ module.exports = {
       type: Password,
       isRequired: true,
     },
-	isAdmin: { type: Checkbox, defaultValue: false },
+	isAdmin: { 
+	  type: Checkbox, 
+	  defaultValue: false,
+	  access: {
+        update: ({ existingItem, authentication: { item } }) => {
+          return item.isAdmin;
+        },
+	  }
+	},
+	isLauncher: { 
+	  type: Checkbox, 
+	  defaultValue: false,
+	  access: {
+        update: ({ existingItem, authentication: { item } }) => {
+          return item.isAdmin;
+        },
+	  }
+	},
+	isDeliveryMan: { 
+	  type: Checkbox, 
+	  defaultValue: false,
+	  access: {
+        update: ({ existingItem, authentication: { item } }) => {
+          return item.isAdmin;
+        },
+	  }
+	},
+    location: {
+      type: Select,
+      dataType: 'string',
+      options: "Algiers, Setif, Oran, Djelfa, Tizi Ouzou, Batna, Chlef, MSila, Bejaia, Tlemcen, Constantine, Skikda, Tiaret, Blida, Mila, Medea, Mascara, AinDefla, Biskra, Mostaganem, Relizane, Bouira, Tebessa, BordjBouArreridj, ElOued, Jijel, OumElBouaghi, Annaba, Boumerdes, Ouargla, SidiBelAbbes, Guelma, Tipaza, Khenchela, Laghouat, SoukAhras, ElTarf, Adrar, Ghardaia, AinTemouchent, Saida, ElBayadh, Tissemsilt, Bechar, Naama, Tamanrasset, Tindouf, Illizi",
+	  access: {
+        update: ({ existingItem, authentication: { item } }) => {
+          return item.isAdmin;
+        },
+	  }
+    },
 	email: {
       type: Text,
 	  isUnique: true,
