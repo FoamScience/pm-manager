@@ -23,7 +23,8 @@
     "@keystonejs/keystone": "^8.0.0",
     "connect-mongo": "^3.2.0",
     "cross-env": "^7.0.0",
-    "express-session": "^1.17.1"
+    "express-session": "^1.17.1",
+    "serialize-javascript": "^3.1.0"
   },
   "repository": "https://github.com/keystonejs/keystone/tree/master/demo-projects/todo"
 }
